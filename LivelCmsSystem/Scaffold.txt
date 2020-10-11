@@ -1,0 +1,1 @@
+dotnet-ef dbcontext scaffold "Data Source=.\SQLEXPRESS;Initial Catalog=LivelCMSDb;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Models --force --context ApplicationDbContext
