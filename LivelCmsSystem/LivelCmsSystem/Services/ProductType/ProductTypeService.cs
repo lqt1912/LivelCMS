@@ -33,6 +33,12 @@ namespace LivelCMSSystem.Core.Repository
             productTypeRepository.SaveChanges();
         }
 
+        public List<ProductTypeViewModel> GetAll()
+        {
+            var result = productTypeRepository.GetAll();
+            return mapper.Map(result, new List<ProductTypeViewModel>());
+        }
+
         public ProductTypeViewModel Read(Guid id)
         {
             var entity = productTypeRepository.GetById(id);

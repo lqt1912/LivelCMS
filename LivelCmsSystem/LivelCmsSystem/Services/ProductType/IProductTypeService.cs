@@ -13,5 +13,6 @@ namespace LivelCMSSystem.Core.Repository
         ProductTypeViewModel Read(Guid id);
         void Update(ProductTypeViewModel model);
         void Delete(Guid id);
+        List<ProductTypeViewModel> GetAll();
     }
 }

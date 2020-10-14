@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Brand";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model List<LivelCMSSystem.Models.BrandViewModel>
+
+<div class="content">
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh sách nhãn hiệu</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã nhãn hiệu</th>
+                                    <th>Tên nhãn hiệu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id.ToString().Substring(0, 5)</td>
+                                        <td>
+                                            @item.BrandName
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

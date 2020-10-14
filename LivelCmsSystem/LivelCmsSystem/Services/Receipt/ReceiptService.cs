@@ -34,6 +34,12 @@ namespace LivelCMSSystem.Core.Repository
             receiptRepository.SaveChanges();
         }
 
+        public List<ReceiptViewModel> GetAll()
+        {
+            var result = receiptRepository.GetAll();
+            return mapper.Map(result, new List<ReceiptViewModel>());
+        }
+
         public ReceiptViewModel Read(Guid id)
         {
             var entity = receiptRepository.GetById(id);
@@ -46,5 +52,7 @@ namespace LivelCMSSystem.Core.Repository
             receiptRepository.Update(entity);
             receiptRepository.SaveChanges();
         }
+
+
     }
 }

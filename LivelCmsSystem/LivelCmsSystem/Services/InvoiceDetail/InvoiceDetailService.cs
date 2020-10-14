@@ -4,6 +4,7 @@ using LivelCMSSystem.Core.Models;
 using LivelCMSSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LivelCMSSystem.Core.Repository
@@ -31,6 +32,18 @@ namespace LivelCMSSystem.Core.Repository
             var entity = invoiceDetailRepository.GetById(id);
             invoiceDetailRepository.Delete(entity);
             invoiceDetailRepository.SaveChanges();
+        }
+
+        public List<InvoiceDetailViewModel> GetAll()
+        {
+            var result = invoiceDetailRepository.GetAll();
+            return mapper.Map(result, new List<InvoiceDetailViewModel>());
+        }
+
+        public List<InvoiceDetailViewModel> GetAllByInvoiceId(Guid id)
+        {
+            var result = invoiceDetailRepository.GetAll().Where(x => x.InvoiceId == id);
+            return mapper.Map(result, new List<InvoiceDetailViewModel>());
         }
 
         public InvoiceDetailViewModel Read(Guid id)

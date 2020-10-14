@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model List<LivelCMSSystem.Models.ProductViewModel>
+@inject LivelCMSSystem.Core.Repository.IBrandService brandService
+@inject LivelCMSSystem.Core.Repository.IProductTypeService productTypeService
+<div class="content">
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Quản lý sản phẩm</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Nhãn hiệu</th>
+                                    <th>Loại sản phẩm</th>
+                                    <th>Đơn giá (VNĐ)</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id.ToString().Substring(0,5)</td>
+                                        <td>
+                                            @item.Name
+                                        </td>
+                                        <td>@brandService.Read(item.Brand.Value).BrandName</td>
+                                        <td> @productTypeService.Read(item.ProductType.Value).ProductTypeName</td>
+                                        <td>@item.UnitPrice.Value.ToString("N0")</td>
+                                        <td><a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                          
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

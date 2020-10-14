@@ -1,0 +1,108 @@
+﻿@model LivelCMSSystem.Models.InvoiceViewModel
+@{
+    ViewData["Title"] = "InvoiceDetail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+    var disabled = "";
+    var display = "block";
+    if(statusService.Read(Model.Status.Value).Id.ToString()!= "a46e56ac-c0b6-4ad6-bd4c-83e47b23d31b")
+    {
+        disabled = "disabled";
+        display = "none";
+    }
+
+}
+
+
+@inject LivelCMSSystem.Core.Repository.IInvoiceStatusService statusService
+@inject LivelCMSSystem.Core.Repository.IProductService productService
+@inject LivelCMSSystem.Core.Repository.ICustomerService customerService
+<h4 class="pt-3 pb-3 pl-3 ">Chi tiết hóa đơn</h4>
+<h5 class="pt-3 pb-3 pl-3 ">Mã hóa đơn @Model.Id</h5>
+<hr />
+<div class="row pt-3 pb-3 pl-3 ">
+    <div class="col-md-4">
+        <form >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label  class="control-label">Trạng thái</label>
+                <input disabled class="form-control" value="@statusService.Read(Model.Status.Value).Name" />
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Tên khách hàng</label>
+                <input disabled class="form-control" value="@customerService.Read(Model.CustomerId.Value).Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label">Ngày lập</label>
+                <input disabled class="form-control" value="@Model.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Discription" class="control-label">Mô tả</label>
+                <textarea disabled asp-for="@Model.Discription" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label">Tổng cộng </label>
+                <input asp-for="@Model.TotalPrice" value="@ViewBag.TotalPrice" class="form-control" disabled />
+            </div>
+
+            <div class="form-group">
+                <a asp-action="UpdateInvoice" asp-controller="Invoice" asp-route-id="@Model.Id" style="display:@display" class="btn btn-primary"> Chỉnh sửa thông tin</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+
+        <div class="content">
+            <div class=" container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="control-label">Chi tiết hóa đơn</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Đơn giá</th>
+                                            <th>Thành tiền</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.InvoiceDetail as List<LivelCMSSystem.Models.InvoiceDetailViewModel>)
+                                        {
+                                            <tr>
+                                                <td>@item.Id.ToString().Substring(0, 3)</td>
+                                                <td>
+                                                    @productService.Read(item.Product.Value).Name
+                                                </td>
+                                                <td>@item.Amount</td>
+                                                <td> @item.UnitPrice</td>
+                                                <td>@item.TotalPrice</td>
+                                                <td><a style="display:@display" asp-action="DeleteInvoiceDetail"  asp-controller="Invoice" asp-route-invoiceId="@Model.Id" asp-route-id="@item.Id" >Xóa</a></td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a  style="display:@display" class="btn btn-outline-primary ml-2 mr-2 "  asp-action="AddInvoiceDetail" asp-controller="Invoice" asp-route-id="@Model.Id">Thêm chi tiết hóa đơn</a>
+
+    </div>
+</div>
+
+

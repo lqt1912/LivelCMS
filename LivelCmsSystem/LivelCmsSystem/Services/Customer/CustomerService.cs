@@ -33,6 +33,12 @@ namespace LivelCMSSystem.Core.Repository
             customerRepository.SaveChanges();
         }
 
+        public List<CustomerViewModel> GetAll()
+        {
+            var result = customerRepository.GetAll();
+            return mapper.Map(result, new List<CustomerViewModel>());
+        }
+
         public CustomerViewModel Read(Guid id)
         {
             var entity = customerRepository.GetById(id);

@@ -32,6 +32,12 @@ namespace LivelCMSSystem.Core.Repository
             invoiceRepository.SaveChanges();
         }
 
+        public List<InvoiceViewModel> GetAll()
+        {
+            var result = invoiceRepository.GetAll();
+            return mapper.Map(result, new List<InvoiceViewModel>());
+        }
+
         public InvoiceViewModel Read(Guid id)
         {
             var entity = invoiceRepository.GetById(id);

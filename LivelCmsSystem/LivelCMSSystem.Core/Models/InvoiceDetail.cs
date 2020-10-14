@@ -11,6 +11,8 @@ namespace LivelCMSSystem.Core.Models
         public int? UnitPrice { get; set; }
         public int? TotalPrice { get; set; }
         public Guid? InvoiceId { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public virtual Invoice Invoice { get; set; }
         public virtual Product ProductNavigation { get; set; }

@@ -1,0 +1,39 @@
+﻿@model LivelCMSSystem.Models.ReceiptViewModel
+@{
+    ViewData["Title"] = "UpdateReceipt";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h4 class="pl-3 pt-3 pb-3 ">Cập nhật chứng từ </h4>
+<hr />
+<div class="row pl-3 ">
+    <div class="col-md-4">
+        <form asp-action="AddReceipt">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Tên khách hàng </label>
+                <select class="chosen-select form-control " asp-for="@Model.CustomerId" asp-items="@(new SelectList(ViewBag.Customer as List<LivelCMSSystem.Models.CustomerViewModel>,"Id", "Name"))">
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReceivedAmount" class="control-label">Số tiền nhận </label>
+                <input asp-for="@Model.ReceivedAmount" class="form-control" />
+                <span asp-validation-for="ReceivedAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Mô tả </label>
+                <input asp-for="@Model.Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Cập nhật chứng từ " class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

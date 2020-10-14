@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Receipt";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@model List<LivelCMSSystem.Models.ReceiptViewModel>
+@inject LivelCMSSystem.Core.Repository.ICustomerService customerService 
+<div class="content">
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Quản lý sản phẩm</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã chứng từ</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Số tiền nhận</th>
+                                    <th>Ngày lập </th>
+                                    <th>Ghi chú</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id.ToString().Substring(0, 5)</td>
+                                        <td>
+                                            @customerService.Read(item.CustomerId.Value).Name
+                                        </td>
+                                        <td>@item.ReceivedAmount</td>
+                                        <td> @item.CreatedDate.Value.ToString("dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture)</td>
+                                        <td>@item.Description</td>
+                                        <td><a asp-action="ReceiptDetail" asp-controller="Receipt" asp-route-id="@item.Id">Chi tiết</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

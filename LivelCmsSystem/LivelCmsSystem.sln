@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem", "LivelCmsSystem\LivelCmsSystem.csproj", "{C3A70A0B-2CF0-4470-818D-D811726C7BDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelCmsSystem", "LivelCmsSystem\LivelCmsSystem.csproj", "{C3A70A0B-2CF0-4470-818D-D811726C7BDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCMSSystem.Core", "LivelCMSSystem.Core\LivelCMSSystem.Core.csproj", "{A5FD726F-8461-4826-9B56-AB509D028D6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelCMSSystem.Core", "LivelCMSSystem.Core\LivelCMSSystem.Core.csproj", "{A5FD726F-8461-4826-9B56-AB509D028D6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5EF8368-40B9-4B5E-AA35-FEB20D5EB6FE}"
 	ProjectSection(SolutionItems) = preProject
 		Scaffold.txt = Scaffold.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.DataGenerator", "LivelCmsSystem.DataGenerator\LivelCmsSystem.DataGenerator.csproj", "{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{A5FD726F-8461-4826-9B56-AB509D028D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5FD726F-8461-4826-9B56-AB509D028D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5FD726F-8461-4826-9B56-AB509D028D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

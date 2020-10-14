@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Customer";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model List<LivelCMSSystem.Models.CustomerViewModel>
+<div class="content">
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Quản lý khách hàng </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã khách hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.Id.ToString().Substring(0, 5)</td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>@item.Address</td>
+                                    <td> @item.PhoneNumber</td>
+                                    <td>@item.Email</td>
+                                    <td><a asp-action="UpdateCustomer" asp-controller="Customer" asp-route-id="@item.Id">Cập nhật</a></td>
+                                </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

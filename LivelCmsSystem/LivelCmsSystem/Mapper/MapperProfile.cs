@@ -21,7 +21,7 @@ namespace LivelCmsSystem.Mapper
             CreateMap<InvoiceDetail, InvoiceDetailViewModel>().ReverseMap();
             CreateMap<InvoiceStatus, InvoiceStatusViewModel>().ReverseMap();
             CreateMap<Invoice, InvoiceViewModel>().ReverseMap();
-            CreateMap<ProductType, ProductViewModel>().ReverseMap();
+            CreateMap<ProductType, ProductTypeViewModel>().ReverseMap();
             CreateMap<Product  , ProductViewModel>().ReverseMap();
             CreateMap<Receipt   , ReceiptViewModel>().ReverseMap();
             CreateMap<AspNetUserTokens, AspNetUserTokensViewModel>().ReverseMap();

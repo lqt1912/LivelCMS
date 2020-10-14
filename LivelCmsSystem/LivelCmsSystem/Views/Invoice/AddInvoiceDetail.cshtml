@@ -1,0 +1,35 @@
+﻿@model LivelCMSSystem.Models.InvoiceDetailViewModel
+
+@{
+    ViewData["Title"] = "AddInvoiceDetail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<h4 class="pl-3 pt-3 pb-3">Thêm chi tiết hóa đơn</h4>
+<div class="row pl-3 pt-3 pb-3">
+    <div class="col-md-4">
+        <form asp-action="AddInvoiceDetail" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+            <div class="form-group">
+                <label asp-for="Product" class="control-label">Tên sản phẩm </label>
+                <select class="chosen-select form-control "  asp-for="Product" asp-items="@(new SelectList(ViewBag.Product as List<LivelCMSSystem.Models.ProductViewModel>,"Id", "Name"))">
+                </select>
+                <span asp-validation-for="Product" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label">Số lượng </label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="InvoiceId" value="@ViewBag.InvoiceId" type="hidden" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

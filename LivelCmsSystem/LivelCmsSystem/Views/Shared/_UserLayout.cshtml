@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Livel CMS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
+
+    <!--Data tables css-->
+    <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -27,6 +32,10 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7ecf865538.js" crossorigin="anonymous"></script>
+
+    
+    @*<link rel="stylesheet" href="~/chosen/docsupport/prism.css">*@
+    <link rel="stylesheet" href="~/chosen/chosen.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -39,7 +48,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link text-uppercase">Trang chủ</a>
+                    <a asp-controller="Home" asp-action="Test" class="nav-link text-uppercase">Trang chủ</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link text-uppercase">Liên hệ </a>
@@ -59,8 +68,8 @@
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                       <span class="text-uppercase"> Đăng xuất </span> <i class="fas fa-sign-out-alt"></i>
+                    <a class="nav-link" href="#" role="button">
+                        <span class="text-uppercase"> Đăng xuất </span> <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
             </ul>
@@ -70,7 +79,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a asp-action="Test" asp-controller="Home" class="brand-link">
                 <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">Quản lý sản phẩm</span>
@@ -92,7 +101,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-         with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
@@ -103,21 +112,27 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link ">
+                                    <a asp-controller="Livel" asp-action="Product" class="nav-link ">
                                         <i class="fab fa-product-hunt nav-icon"></i>
                                         <p>Sản phẩm </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a asp-controller="Livel" asp-action="Customer" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>Khách hàng</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
+                                    <a asp-controller="Livel" asp-action="Invoice" class="nav-link">
                                         <i class="fas fa-file-invoice nav-icon"></i>
                                         <p>Hóa đơn</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Livel" asp-action="Receipt" class="nav-link">
+                                        <i class="fas fa-receipt nav-icon"></i>
+                                        <p>Chứng từ</p>
                                     </a>
                                 </li>
                             </ul>
@@ -134,23 +149,18 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                    <a asp-action="Update" asp-controller="Product" class="nav-link">
                                         <i class="fab fa-product-hunt nav-icon"></i>
                                         <p>Sản phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                    <a asp-action="Update" asp-controller="Customer" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>Khách hàng</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/boxed.html" class="nav-link">
-                                        <i class="fas fa-file-invoice nav-icon"></i>
-                                        <p>Hóa đơn</p>
-                                    </a>
-                                </li>
+                         
                                 <li class="nav-item">
                                     <a href="pages/layout/fixed-sidebar.html" class="nav-link">
                                         <i class="fas fa-receipt nav-icon"></i>
@@ -172,25 +182,25 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                    <a asp-controller="Product" asp-action="AddProduct" class="nav-link">
                                         <i class="fab fa-product-hunt nav-icon"></i>
                                         <p>Sản phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                    <a asp-controller="Customer" asp-action="AddCustomer" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>Khách hàng</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/boxed.html" class="nav-link">
+                                    <a asp-controller="Invoice" asp-action="AddInvoice" class="nav-link">
                                         <i class="fas fa-file-invoice nav-icon"></i>
                                         <p>Hóa đơn</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                                    <a asp-controller="Receipt" asp-action="AddReceipt" class="nav-link">
                                         <i class="fas fa-receipt nav-icon"></i>
                                         <p>Chứng từ</p>
                                     </a>
@@ -208,37 +218,37 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a asp-controller="Utilities" asp-action="ProductType" class="nav-link">
                                         <i class="fab fa-acquisitions-incorporated nav-icon"></i>
                                         <p>Loại sản phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a asp-controller="Utilities" asp-action="Brand" class="nav-link">
                                         <i class="far fa-copyright nav-icon"></i>
                                         <p>Nhãn hiệu</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
+                                    <a asp-controller="Utilities" asp-action="InvoiceStatus" class="nav-link">
                                         <i class="fas fa-info nav-icon"></i>
                                         <p>Tình trạng hóa đơn</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                       
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
-        <div class=" content-wrapper">
+        <div class="content-wrapper">
             @RenderBody()
         </div>
 
-      
+
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved. Modified by <strong><a href="#">lqt1912</a></strong>
@@ -260,7 +270,7 @@
     <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-  $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -288,5 +298,30 @@
     <script src="~/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/dist/js/demo.js"></script>
+    <!-- DataTables -->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/chosen/chosen.jquery.js" type="text/javascript"></script>
+    <script src="~/chosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/chosen/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 </html>

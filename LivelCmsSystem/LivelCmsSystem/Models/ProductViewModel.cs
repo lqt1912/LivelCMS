@@ -17,7 +17,7 @@ namespace LivelCMSSystem.Models
         public Guid? ProductType { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
-
+        public bool? IsActive { get; set; }
         public virtual BrandViewModel BrandNavigation { get; set; }
         public virtual ProductTypeViewModel ProductTypeNavigation { get; set; }
         public virtual ICollection<InvoiceDetailViewModel> InvoiceDetail { get; set; }

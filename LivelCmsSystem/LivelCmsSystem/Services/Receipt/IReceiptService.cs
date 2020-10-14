@@ -14,5 +14,6 @@ namespace LivelCMSSystem.Core.Repository
         ReceiptViewModel Read(Guid id);
         void Update(ReceiptViewModel model);
         void Delete(Guid id);
+        List<ReceiptViewModel> GetAll();
     }
 }

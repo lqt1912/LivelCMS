@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "InvoiceStatus";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@model List<LivelCMSSystem.Models.InvoiceStatusViewModel>
+
+<div class="content">
+    <div class=" container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh sách tình trạng hóa đơn</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã tình trạng</th>
+                                    <th>Tên tình trạng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id.ToString().Substring(0, 5)</td>
+                                        <td>
+                                            @item.Name
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
