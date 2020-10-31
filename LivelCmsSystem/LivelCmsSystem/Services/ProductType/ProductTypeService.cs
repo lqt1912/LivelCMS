@@ -39,6 +39,11 @@ namespace LivelCMSSystem.Core.Repository
             return mapper.Map(result, new List<ProductTypeViewModel>());
         }
 
+        public string GetName(Guid id)
+        {
+            return productTypeRepository.GetById(id).ProductTypeName;
+        }
+
         public ProductTypeViewModel Read(Guid id)
         {
             var entity = productTypeRepository.GetById(id);

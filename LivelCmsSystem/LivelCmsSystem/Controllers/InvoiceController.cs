@@ -87,11 +87,12 @@ namespace LivelCmsSystem.Controllers
         {
             ViewBag.Customer = customerService.GetAll();
             var data = invoiceService.Read(id);
-            ViewBag.TotalPrice = 0;
+            var totalPrice = 0;
             foreach (var item in invoiceDetailService.GetAllByInvoiceId(id))
             {
-                ViewBag.TotalPrice += item.TotalPrice;
+               totalPrice += item.TotalPrice.Value;
             }
+            ViewBag.TotalPrice = totalPrice.ToString("N0");
             ViewBag.InvoiceDetail = invoiceDetailService.GetAllByInvoiceId(id);
             ViewBag.InvoiceStatus = invoiceStatusService.GetAll();
             return View(data);

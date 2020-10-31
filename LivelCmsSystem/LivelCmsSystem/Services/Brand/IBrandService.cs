@@ -15,6 +15,6 @@ namespace LivelCMSSystem.Core.Repository
         void Delete(Guid id);
 
         List<BrandViewModel> GetAll();
-
+        string GetName(Guid id);
     }
 }

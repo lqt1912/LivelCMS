@@ -21,7 +21,7 @@
                                 <tr>
                                     <th>Mã chứng từ</th>
                                     <th>Tên khách hàng</th>
-                                    <th>Số tiền nhận</th>
+                                    <th>Số tiền nhận (VND)</th>
                                     <th>Ngày lập </th>
                                     <th>Ghi chú</th>
                                     <th>Action</th>
@@ -30,16 +30,23 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>@item.Id.ToString().Substring(0, 5)</td>
-                                        <td>
-                                            @customerService.Read(item.CustomerId.Value).Name
-                                        </td>
-                                        <td>@item.ReceivedAmount</td>
-                                        <td> @item.CreatedDate.Value.ToString("dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture)</td>
-                                        <td>@item.Description</td>
-                                        <td><a asp-action="ReceiptDetail" asp-controller="Receipt" asp-route-id="@item.Id">Chi tiết</a></td>
-                                    </tr>
+                                <tr>
+                                    <td>@item.Id.ToString().Substring(0, 5)</td>
+                                    <td>
+                                        @customerService.Read(item.CustomerId.Value).Name
+                                    </td>
+                                    @if (item.ReceivedAmount != null)
+                                    {
+                                        <td>@item.ReceivedAmount.Value.ToString("N0")</td>
+                                    }
+                                    else
+                                    {
+                                        <td>0</td>
+                                    }
+                                    <td> @item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
+                                    <td>@item.Description</td>
+                                    <td><a asp-action="ReceiptDetail" asp-controller="Receipt" asp-route-id="@item.Id">Chi tiết</a></td>
+                                </tr>
                                 }
 
                             </tbody>

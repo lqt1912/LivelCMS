@@ -30,16 +30,23 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>@item.Id.ToString().Substring(0,5)</td>
-                                        <td>
-                                            @item.Name
-                                        </td>
-                                        <td>@brandService.Read(item.Brand.Value).BrandName</td>
-                                        <td> @productTypeService.Read(item.ProductType.Value).ProductTypeName</td>
+                                <tr>
+                                    <td>@item.Id.ToString().Substring(0, 5)</td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>@brandService.Read(item.Brand.Value).BrandName</td>
+                                    <td> @productTypeService.Read(item.ProductType.Value).ProductTypeName</td>
+                                    @if (item.UnitPrice != null)
+                                    {
                                         <td>@item.UnitPrice.Value.ToString("N0")</td>
-                                        <td><a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a></td>
-                                    </tr>
+                                    }
+                                    else
+                                    { 
+                                        <td>0</td>
+                                    }
+                                    <td><a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a></td>
+                                </tr>
                                 }
 
                             </tbody>

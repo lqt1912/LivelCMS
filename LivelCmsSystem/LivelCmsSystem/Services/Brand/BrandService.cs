@@ -39,6 +39,11 @@ namespace LivelCMSSystem.Core.Repository
             return mapper.Map(result, new List<BrandViewModel>());
         }
 
+        public string GetName(Guid id)
+        {
+            return brandRepository.GetById(id).BrandName;
+        }
+
         public BrandViewModel Read(Guid id)
         {
             var entity = brandRepository.GetById(id);

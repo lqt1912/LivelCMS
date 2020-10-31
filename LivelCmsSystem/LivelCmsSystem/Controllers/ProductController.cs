@@ -54,9 +54,11 @@ namespace LivelCmsSystem.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(Guid id )
         {
-            ViewBag.Brand = brandService.GetAll();
-            ViewBag.ProductType = productTypeService.GetAll();
+            //ViewBag.Brand = brandService.GetAll();
+            //ViewBag.ProductType = productTypeService.GetAll();
             var data = productService.Read(id);
+            ViewBag.Brand = brandService.GetName(data.Brand.Value);
+            ViewBag.ProductType = productTypeService.GetName(data.ProductType.Value);
             return View(data);
         }
 
