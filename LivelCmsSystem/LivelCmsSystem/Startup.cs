@@ -77,7 +77,7 @@ namespace LivelCmsSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Test}/{id?}");
+                    pattern: "{controller=Livel}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

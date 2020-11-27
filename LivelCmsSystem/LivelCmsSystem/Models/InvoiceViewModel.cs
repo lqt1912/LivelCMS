@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LivelCMSSystem.Models
 {
@@ -11,10 +12,13 @@ namespace LivelCMSSystem.Models
         }
 
         public Guid Id { get; set; }
+
         public string Discription { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifedDate { get; set; }
         public int? TotalPrice { get; set; }
+
+        public int? RemainDebt { get; set; }
         public Guid? Status { get; set; }
         public Guid? CustomerId { get; set; }
 

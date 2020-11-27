@@ -7,6 +7,7 @@
 @model List<LivelCMSSystem.Models.InvoiceViewModel>
 @inject LivelCMSSystem.Core.Repository.ICustomerService customerService
 @inject LivelCMSSystem.Core.Repository.IInvoiceStatusService invoiceStatusService
+@inject LivelCMSSystem.Core.Repository.IInvoiceService invoiceService   
 <div class="content">
     <div class=" container-fluid">
         <div class="row">
@@ -22,27 +23,29 @@
                                 <tr>
                                     <th>Mã HĐ</th>
                                     <th>Tên khách hàng</th>
-                                    <th>Trạng thái</th> 
+                                    <th>Trạng thái</th>
                                     <th>Ngày lập</th>
-                                    <th>Ghi chú</th>
+                                    <th>Gía trị</th>
+                                    <th>Nợ</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>@item.Id.ToString().Substring(0, 5)</td>
-                                        <td>
-                                            @customerService.Read(item.CustomerId.Value).Name
-                                        </td>
-                                        <td> @invoiceStatusService.Read(item.Status.Value).Name</td>
-                                        <td>
-                                            @item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
-                                        </td>
-                                        <td>@item.Discription</td>
-                                        <td><a asp-action="InvoiceDetail" asp-controller="Invoice" asp-route-id="@item.Id">Chi tiết</a></td>
-                                    </tr>
+                                <tr>
+                                    <td>@item.Id.ToString().Substring(0, 5)</td>
+                                    <td>
+                                        @customerService.Read(item.CustomerId.Value).Name
+                                    </td>
+                                    <td> @invoiceStatusService.Read(item.Status.Value).Name</td>
+                                    <td>
+                                        @item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
+                                    </td>
+                                    <td>@item.TotalPrice.Value.ToString("0")</td>
+                                    <td>@item.RemainDebt.Value.ToString("0")</td>
+                                    <td><a asp-action="InvoiceDetail" asp-controller="Invoice" asp-route-id="@item.Id">Chi tiết</a></td>
+                                </tr>
                                 }
 
                             </tbody>

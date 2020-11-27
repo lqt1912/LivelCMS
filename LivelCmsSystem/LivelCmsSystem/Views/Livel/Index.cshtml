@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@ViewBag.ProductNumber</h3>
+
+                    <p>Sản phẩm</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="~/danh-sach-san-pham" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@ViewBag.InvoiceNumber</h3>
+
+                    <p>Khách hàng</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="~/danh-sach-khach-hang" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>@ViewBag.InvoiceNumber</h3>
+
+                    <p>Đơn đặt hàng</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="~/danh-sach-hoa-don" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>@ViewBag.ReceiptNumber</h3>
+
+                    <p>Chứng từ</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="~/danh-sach-chung-tu" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <div class="row">
+        <div class="col-6 card">
+            <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                    <h3 class="card-title">Tổng thu nhập</h3>
+                    <a href="javascript:void(0);">View Report</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex">
+                    <p class="d-flex flex-column">
+                        <span class="text-bold text-lg">@ViewBag.TotalIncome.ToString("N0") VNĐ  </span>
+                        <span>Giá trị hóa đơn</span>
+                    </p>
+                </div>
+                <!-- /.d-flex -->
+
+            </div>
+        </div>
+    </div>
+</div>
+

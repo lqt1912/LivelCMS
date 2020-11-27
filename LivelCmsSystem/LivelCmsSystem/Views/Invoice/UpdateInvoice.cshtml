@@ -25,12 +25,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="CreatedDate" class="control-label">Ngày lập</label>
-                <input  asp-for="@Model.CreatedDate" class="form-control"/>
+                <input type="hidden"  asp-for="@Model.CreatedDate" class="form-control"/>
                 <span asp-validation-for="CreatedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ModifedDate" class="control-label">Thay đổi lần cuối</label>
-                <input  class="form-control" asp-for="@Model.ModifedDate"  />
+                <input type="hidden"  class="form-control" asp-for="@Model.ModifedDate"  />
                 <span asp-validation-for="ModifedDate" class="text-danger"></span>
             </div>
             <div class="form-group">

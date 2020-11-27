@@ -18,6 +18,7 @@ namespace LivelCMSSystem.Core.Models
         public string Email { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
+        public bool? IsActive { get; set; }
 
         public virtual ICollection<Invoice> Invoice { get; set; }
         public virtual ICollection<Receipt> Receipt { get; set; }

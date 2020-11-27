@@ -39,7 +39,7 @@ namespace LivelCmsSystem.Controllers
         [HttpPost]
         public IActionResult AddProduct(ProductViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 model.Id = Guid.NewGuid();
                 model.CreatedDate = DateTime.Now;
@@ -52,11 +52,12 @@ namespace LivelCmsSystem.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateProduct(Guid id )
+        public IActionResult UpdateProduct(Guid id)
         {
             //ViewBag.Brand = brandService.GetAll();
             //ViewBag.ProductType = productTypeService.GetAll();
             var data = productService.Read(id);
+         
             ViewBag.Brand = brandService.GetName(data.Brand.Value);
             ViewBag.ProductType = productTypeService.GetName(data.ProductType.Value);
             return View(data);
@@ -67,6 +68,7 @@ namespace LivelCmsSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.IsActive = true;
                 model.ModifiedDate = DateTime.Now;
                 productService.Update(model);
 
@@ -84,7 +86,7 @@ namespace LivelCmsSystem.Controllers
         public IActionResult Update(IFormCollection fc)
         {
             var guid = new Guid();
-            if(Guid.TryParse(fc["Id"], out guid))
+            if (Guid.TryParse(fc["Id"], out guid))
             {
                 var data = productService.Read(guid);
                 if (data != null)
@@ -96,6 +98,15 @@ namespace LivelCmsSystem.Controllers
             else return View().WithDanger("Lỗi", "Vui lòng nhập đúng định dạng");
         }
 
-
+        public IActionResult Delete(Guid id)
+        {
+            var data = productService.Read(id);
+            if (data != null)
+            {
+                productService.Delete(id);
+                return RedirectToAction("Product", "Livel").WithSuccess("Thành công", "Bạn đã xóa sản phẩm! ");
+            }
+            return RedirectToAction("Product", "Livel").WithDanger("Lỗi", "Xóa sản phẩm thất bại");
+        }
     }
 }

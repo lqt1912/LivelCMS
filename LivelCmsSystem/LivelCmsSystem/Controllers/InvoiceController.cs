@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using LivelCmsSystem.Services.CustomDataAccess;
 using LivelCMSSystem.Core.Models;
 using LivelCMSSystem.Core.Repository;
 using LivelCMSSystem.Helpers;
@@ -20,13 +21,15 @@ namespace LivelCmsSystem.Controllers
         private readonly IInvoiceService invoiceService;
         private readonly IInvoiceStatusService invoiceStatusService;
         private readonly IInvoiceDetailService invoiceDetailService;
-        public InvoiceController(ICustomerService customerService, IProductService productService, IInvoiceService invoiceService, IInvoiceStatusService invoiceStatusService, IInvoiceDetailService invoiceDetailService)
+        private readonly IDataAccess dataAccess;
+        public InvoiceController(ICustomerService customerService, IProductService productService, IInvoiceService invoiceService, IInvoiceStatusService invoiceStatusService, IInvoiceDetailService invoiceDetailService, IDataAccess dataAccess)
         {
             this.customerService = customerService;
             this.productService = productService;
             this.invoiceService = invoiceService;
             this.invoiceStatusService = invoiceStatusService;
             this.invoiceDetailService = invoiceDetailService;
+            this.dataAccess = dataAccess;
         }
 
         public IActionResult Index()
@@ -53,10 +56,13 @@ namespace LivelCmsSystem.Controllers
                 model.CreatedDate = DateTime.Now;
                 model.ModifedDate = DateTime.Now;
                 model.TotalPrice = 0;
+                model.RemainDebt = 0;
                 invoiceService.Create(model);
                 ModelState.Clear();
                 return RedirectToAction("InvoiceDetail", new { id=a});
             }
+            ViewBag.Customer = customerService.GetAll();
+            ViewBag.Product = productService.GetAll();
             return View();
         }
 
@@ -76,10 +82,9 @@ namespace LivelCmsSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.ModifedDate = DateTime.Now;
-                invoiceService.Update(model);
+                dataAccess.UpdateInvoice(model.Id, model);
             }
-            return RedirectToAction("Invoice", "Livel");
+            return RedirectToAction("InvoiceDetail", new { id=model.Id});
         }
 
 
@@ -87,12 +92,12 @@ namespace LivelCmsSystem.Controllers
         {
             ViewBag.Customer = customerService.GetAll();
             var data = invoiceService.Read(id);
-            var totalPrice = 0;
-            foreach (var item in invoiceDetailService.GetAllByInvoiceId(id))
-            {
-               totalPrice += item.TotalPrice.Value;
-            }
-            ViewBag.TotalPrice = totalPrice.ToString("N0");
+
+            if (data.TotalPrice.HasValue)
+                ViewBag.TotalPrice = data.TotalPrice.Value.ToString("N0");
+            else ViewBag.TotalPrice = 0;
+
+
             ViewBag.InvoiceDetail = invoiceDetailService.GetAllByInvoiceId(id);
             ViewBag.InvoiceStatus = invoiceStatusService.GetAll();
             return View(data);
@@ -103,30 +108,39 @@ namespace LivelCmsSystem.Controllers
         {
             ViewBag.Product = productService.GetAll();
             ViewBag.InvoiceId = id;
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddInvoiceDetail(InvoiceDetailViewModel model)
+        public async Task<IActionResult> AddInvoiceDetail(InvoiceDetailViewModel model)
         {
             if(ModelState.IsValid)
             {
+                if(!(await productService.ReadAsync(model.Product.Value)!=null) || model.Amount.Value<1 || model.Amount.Value>50)
+                {
+                    return RedirectToAction("InvoiceDetail", new { id = model.InvoiceId.Value }).WithDanger("Lỗi","Thêm chi tiết thất bại");
+                }
                 model.Id = Guid.NewGuid();
 
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
-                model.UnitPrice = productService.Read(model.Product.Value).UnitPrice;
+
+                model.UnitPrice = (await productService.ReadAsync(model.Product.Value)).UnitPrice;
                 model.TotalPrice = model.UnitPrice * model.Amount;
 
-                var currentInvoice = invoiceService.Read(model.InvoiceId.Value);
+                var currentInvoice = await invoiceService.ReadAsync(model.InvoiceId.Value);
 
                 currentInvoice.TotalPrice += model.UnitPrice;
-
-                invoiceDetailService.Create(model);
+                await invoiceDetailService.CreateAsync(model);
+            
 
                 return RedirectToAction("InvoiceDetail", new { id = currentInvoice.Id });
             }
-            return View();
+
+            ViewBag.Product = productService.GetAll();
+            ViewBag.InvoiceId = model.InvoiceId.Value;
+            return RedirectToAction("AddInvoiceDetail", new { id=model.InvoiceId.Value}).WithDanger("Lỗi", "Thêm chi tiết hóa đơn thất bại");
         }
 
         public IActionResult DeleteInvoiceDetail(Guid id, Guid invoiceId)

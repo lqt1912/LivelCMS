@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LivelCMSSystem.Models
 {
@@ -7,6 +8,8 @@ namespace LivelCMSSystem.Models
     {
         public Guid Id { get; set; }
         public Guid? Product { get; set; }
+
+        [Required]
         public int? Amount { get; set; }
         public int? UnitPrice { get; set; }
         public int? TotalPrice { get; set; }

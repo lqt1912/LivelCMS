@@ -29,7 +29,6 @@ namespace LivelCMSSystem.Core.Repository
         public void Delete(Guid id)
         {
             var entity = receiptRepository.GetById(id);
-
             receiptRepository.Delete(entity);
             receiptRepository.SaveChanges();
         }

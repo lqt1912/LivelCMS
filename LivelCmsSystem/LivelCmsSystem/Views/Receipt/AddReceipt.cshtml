@@ -8,17 +8,26 @@
 
 <h4 class="pl-3 pt-3 pb-3 ">Tạo chứng từ </h4>
 <hr />
+@Html.Partial("_StatusMessages")
 <div class="row pl-3 ">
+
     <div class="col-md-4">
         <form asp-action="AddReceipt">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
+
             <div class="form-group">
                 <label asp-for="CustomerId" class="control-label">Tên khách hàng </label>
                 <select class="chosen-select form-control " asp-for="CustomerId" asp-items="@(new SelectList(ViewBag.Customer as List<LivelCMSSystem.Models.CustomerViewModel>,"Id", "Name"))">
                 </select>
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="InvoiceId" class="control-label">Mã hóa đơn </label>
+                <input asp-for="InvoiceId" class="form-control" />
+                <span asp-validation-for="InvoiceId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="ReceivedAmount" class="control-label">Số tiền nhận </label>
                 <input asp-for="ReceivedAmount" class="form-control" />
@@ -29,7 +38,7 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group">
                 <input type="submit" value="Tạo chứng từ " class="btn btn-primary" />
             </div>

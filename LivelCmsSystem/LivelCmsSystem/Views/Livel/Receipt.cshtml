@@ -20,7 +20,7 @@
                             <thead>
                                 <tr>
                                     <th>Mã chứng từ</th>
-                                    <th>Tên khách hàng</th>
+                                    <th>Mã hóa đơn</th>
                                     <th>Số tiền nhận (VND)</th>
                                     <th>Ngày lập </th>
                                     <th>Ghi chú</th>
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>@item.Id.ToString().Substring(0, 5)</td>
                                     <td>
-                                        @customerService.Read(item.CustomerId.Value).Name
+                                        @item.InvoiceId.Value.ToString().Substring(0,5)
                                     </td>
                                     @if (item.ReceivedAmount != null)
                                     {

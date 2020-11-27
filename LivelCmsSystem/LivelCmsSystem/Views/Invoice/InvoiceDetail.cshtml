@@ -5,7 +5,7 @@
 
     var disabled = "";
     var display = "block";
-    if(statusService.Read(Model.Status.Value).Id.ToString()!= "a46e56ac-c0b6-4ad6-bd4c-83e47b23d31b")
+    if (statusService.Read(Model.Status.Value).Id.ToString() != "a46e56ac-c0b6-4ad6-bd4c-83e47b23d31b")
     {
         disabled = "disabled";
         display = "none";
@@ -19,15 +19,16 @@
 @inject LivelCMSSystem.Core.Repository.ICustomerService customerService
 <h4 class="pt-3 pb-3 pl-3 ">Chi tiết hóa đơn</h4>
 <h5 class="pt-3 pb-3 pl-3 ">Mã hóa đơn @Model.Id</h5>
+@Html.Partial("_StatusMessages")
 <hr />
 <div class="row pt-3 pb-3 pl-3 ">
     <div class="col-md-4">
-        <form >
+        <form>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label  class="control-label">Trạng thái</label>
+                <label class="control-label">Trạng thái</label>
                 <input disabled class="form-control" value="@statusService.Read(Model.Status.Value).Name" />
-                
+
             </div>
             <div class="form-group">
                 <label asp-for="CustomerId" class="control-label">Tên khách hàng</label>
@@ -43,7 +44,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TotalPrice" class="control-label">Tổng cộng(VND) </label>
-                <input asp-for="@Model.TotalPrice" value="@ViewBag.TotalPrice" class="form-control" disabled />
+                <input value="@Model.TotalPrice" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="RemainDebt" class="control-label">Còn nợ </label>
+                <input value="@Model.RemainDebt" class="form-control" disabled />
             </div>
 
             <div class="form-group">
@@ -77,16 +82,21 @@
                                     <tbody>
                                         @foreach (var item in ViewBag.InvoiceDetail as List<LivelCMSSystem.Models.InvoiceDetailViewModel>)
                                         {
-                                            <tr>
-                                                <td>@item.Id.ToString().Substring(0, 3)</td>
-                                                <td>
-                                                    @productService.Read(item.Product.Value).Name
-                                                </td>
-                                                <td>@item.Amount</td>
-                                                <td> @item.UnitPrice.Value.ToString("N0")</td>
-                                                <td>@item.TotalPrice.Value.ToString("N0")</td>
-                                                <td><a style="display:@display" asp-action="DeleteInvoiceDetail"  asp-controller="Invoice" asp-route-invoiceId="@Model.Id" asp-route-id="@item.Id" >Xóa</a></td>
-                                            </tr>
+                                            if (item != null)
+                                            {
+
+
+                                                <tr>
+                                                    <td>@item.Id.ToString().Substring(0, 3)</td>
+                                                    <td>
+                                                        @productService.Read(item.Product.Value).Name
+                                                    </td>
+                                                    <td>@item.Amount</td>
+                                                    <td> @item.UnitPrice.Value.ToString("N0")</td>
+                                                        <td>@item.TotalPrice.Value.ToString("N0")</td>
+                                                    <td><a style="display:@display" asp-action="DeleteInvoiceDetail" asp-controller="Invoice" asp-route-invoiceId="@Model.Id" asp-route-id="@item.Id">Xóa</a></td>
+                                                </tr>
+                                            }
                                         }
 
                                     </tbody>
@@ -100,7 +110,7 @@
             </div>
         </div>
 
-        <a  style="display:@display" class="btn btn-outline-primary ml-2 mr-2 "  asp-action="AddInvoiceDetail" asp-controller="Invoice" asp-route-id="@Model.Id">Thêm chi tiết hóa đơn</a>
+        <a style="display:@display" class="btn btn-outline-primary ml-2 mr-2 " asp-action="AddInvoiceDetail" asp-controller="Invoice" asp-route-id="@Model.Id">Thêm chi tiết hóa đơn</a>
 
     </div>
 </div>

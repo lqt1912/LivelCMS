@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Core.Objects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -267,5 +268,6 @@ namespace LivelCMSSystem.Core.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+       
     }
 }

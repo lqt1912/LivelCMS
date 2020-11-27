@@ -36,6 +36,7 @@ namespace LivelCmsSystem.Controllers
             if(ModelState.IsValid)
             {
                 model.Id = Guid.NewGuid();
+                model.IsActive = true;
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 customerService.Create(model);
@@ -83,5 +84,14 @@ namespace LivelCmsSystem.Controllers
             else return View().WithDanger("Lỗi", "Vui lòng nhập đúng định dạng");
         }
 
+        public IActionResult DeleteCustomer(Guid id)
+        {
+            var data = customerService.Read(id);
+            if(data!=null)
+            {
+                customerService.Delete(id);
+            }
+            return RedirectToAction("Customer", "Livel").WithSuccess("Thành công","Xóa khách hàng thành công");
+        }
     }
 }

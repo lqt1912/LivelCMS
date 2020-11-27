@@ -18,6 +18,7 @@ namespace LivelCMSSystem.Core.Models
         public Guid? Status { get; set; }
         public Guid? CustomerId { get; set; }
 
+        public int? RemainDebt { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual InvoiceStatus StatusNavigation { get; set; }
         public virtual ICollection<InvoiceDetail> InvoiceDetail { get; set; }

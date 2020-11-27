@@ -4,6 +4,7 @@ using LivelCMSSystem.Core.Models;
 using LivelCMSSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LivelCMSSystem.Core.Repository
@@ -29,13 +30,14 @@ namespace LivelCMSSystem.Core.Repository
         public void Delete(Guid id)
         {
             var entity = customerRepository.GetById(id);
-            customerRepository.Delete(entity);
+            //customerRepository.Delete(entity);
+            entity.IsActive = false;
             customerRepository.SaveChanges();
         }
 
         public List<CustomerViewModel> GetAll()
         {
-            var result = customerRepository.GetAll();
+            var result = customerRepository.GetAll().Where(x=>x.IsActive.Value ==true);
             return mapper.Map(result, new List<CustomerViewModel>());
         }
 

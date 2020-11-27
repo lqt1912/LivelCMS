@@ -45,7 +45,10 @@
                                     { 
                                         <td>0</td>
                                     }
-                                    <td><a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a></td>
+                                    <td>
+                                    <a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a>
+                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="pl-2 text-danger">Xóa</a>
+                                    </td>
                                 </tr>
                                 }
 

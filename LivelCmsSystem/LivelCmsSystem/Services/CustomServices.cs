@@ -1,4 +1,5 @@
-﻿using LivelCMSSystem.Core.Repository;
+﻿using LivelCmsSystem.Services.CustomDataAccess;
+using LivelCMSSystem.Core.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace LivelCmsSystem.Services
             services.AddTransient<IProductTypeService, ProductTypeService>();
 
             services.AddTransient<IReceiptService, ReceiptService>();
+
+            services.AddTransient<IDataAccess, DataAccess>();
         }
     }
 }
