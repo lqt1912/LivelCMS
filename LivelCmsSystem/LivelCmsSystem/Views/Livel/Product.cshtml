@@ -45,10 +45,33 @@
                                     { 
                                         <td>0</td>
                                     }
-                                    <td>
+                                <td>
                                     <a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a>
-                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="pl-2 text-danger">Xóa</a>
-                                    </td>
+                                    
+                                    <a data-toggle="modal" data-target="#modal-@item.Id" class="pl-2 text-danger">Xóa</a>
+
+
+                                    <!-- Modal confirm delete  -->
+                                    <div class="modal fade" id="modal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Bạn có muốn <span style="color:red; font-weight:bold;">xóa</span> sản phẩm <span style="color:red; font-weight:bold"> @item.Name</span>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="pl-2 text-danger">Xóa</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                                 </tr>
                                 }
 
