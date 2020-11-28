@@ -6,10 +6,12 @@ using LivelCmsSystem.Services.CustomDataAccess;
 using LivelCMSSystem.Core.Repository;
 using LivelCMSSystem.Helpers;
 using LivelCMSSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
+    [Authorize]
     public class ReceiptController : Controller
     {
 

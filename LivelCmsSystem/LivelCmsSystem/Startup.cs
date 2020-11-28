@@ -41,10 +41,25 @@ namespace LivelCmsSystem
             services.AddDbContext<LivelCMSSystem.Core.Models.ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<LivelCMSSystem.Core.Models.ApplicationDbContext>();
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<LivelCmsSystem.Data.ApplicationDbContext>();
+
             services.ConfigureRepository();
             services.ConfigureServices();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settingseShopDbContext
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+
+                options.SignIn.RequireConfirmedEmail = true;
+            });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); 
             services.AddRazorPages();
@@ -77,7 +92,7 @@ namespace LivelCmsSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Livel}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

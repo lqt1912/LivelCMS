@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using LivelCMSSystem.Core.Repository;
 using LivelCMSSystem.Helpers;
 using LivelCMSSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
@@ -65,6 +67,7 @@ namespace LivelCmsSystem.Controllers
                 if (ModelState.IsValid)
                 {
                     model.ModifiedDate = DateTime.Now;
+                    
                     customerService.Update(model);
                 }
             return RedirectToAction("Customer", "Livel");

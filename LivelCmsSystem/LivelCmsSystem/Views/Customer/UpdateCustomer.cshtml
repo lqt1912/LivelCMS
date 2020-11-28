@@ -7,30 +7,48 @@
 <h4 class="pt-3 pb-3 pl-3 ">Chỉnh sửa thông tin khách hàng</h4>
 <div class="row pl-3">
     <div class="col-md-4">
-        <form method="post" asp-action="UpdateCustomer" asp-controller="Customer">
+        <form asp-action="UpdateCustomer" asp-controller="Customer">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <div class="form-group d-none">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label">Tên khách hàng</label>
-                <input asp-for="@Model.Name" class="form-control" />
+                <label asp-for="Name" class="control-label">Tên khách hàng </label>
+                <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label">Địa chỉ</label>
-                <input asp-for="@Model.Address" class="form-control" />
+                <label asp-for="Address" class="control-label">Địa chỉ </label>
+                <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
-                <input asp-for="@Model.PhoneNumber" class="form-control" />
+                <label asp-for="PhoneNumber" class="control-label"> Số điện thoại</label>
+                <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="@Model.Email" class="form-control" />
+                <label asp-for="Email" class="control-label"> Email</label>
+                <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-
+            <div class="form-group d-none">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="ModifiedDate" class="control-label"></label>
+                <input asp-for="ModifiedDate" class="form-control" />
+                <span asp-validation-for="ModifiedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="IsActive" class="control-label"></label>
+                <input asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Cập nhật khách hàng" class="btn btn-primary" />
             </div>

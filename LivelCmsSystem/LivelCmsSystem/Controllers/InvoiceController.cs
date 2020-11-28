@@ -9,11 +9,13 @@ using LivelCMSSystem.Core.Models;
 using LivelCMSSystem.Core.Repository;
 using LivelCMSSystem.Helpers;
 using LivelCMSSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
+    [Authorize]
     public class InvoiceController : Controller
     {
         private readonly ICustomerService customerService;
