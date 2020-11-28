@@ -57,11 +57,8 @@ namespace LivelCmsSystem.Controllers
                 {
                     return RedirectToAction("AddReceipt").WithDanger("Lỗi", "Tạo chứng từ thất bại, giá trị không phù hợp");
                 }
-                else if(model.CustomerId.Value != invoiceService.Read(model.InvoiceId.Value).CustomerId)
-                {
-                    return RedirectToAction("AddReceipt").WithDanger("Lỗi", "Tạo chứng từ thất bại, không đúng tên khách hàng");
-                }
 
+                model.CustomerId = invoiceService.Read(model.InvoiceId.Value).CustomerId;
 
                 var invoice = invoiceService.Read(model.InvoiceId.Value);
                 invoice.RemainDebt = invoice.RemainDebt - model.ReceivedAmount;

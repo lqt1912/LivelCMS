@@ -33,15 +33,22 @@ namespace LivelCmsSystem.Controllers
         [HttpPost]
         public IActionResult AddCustomer(CustomerViewModel model)
         {
-            if(ModelState.IsValid)
+            var a = customerService.GetAll().FirstOrDefault(x => x.Email == model.Email);
+            var b = customerService.GetAll().FirstOrDefault(x => x.PhoneNumber == model.PhoneNumber);
+            if (a == null && b == null)
             {
-                model.Id = Guid.NewGuid();
-                model.IsActive = true;
-                model.CreatedDate = DateTime.Now;
-                model.ModifiedDate = DateTime.Now;
-                customerService.Create(model);
+                if (ModelState.IsValid)
+                {
+                    model.Id = Guid.NewGuid();
+                    model.IsActive = true;
+                    model.CreatedDate = DateTime.Now;
+                    model.ModifiedDate = DateTime.Now;
+                    customerService.Create(model);
+                    return RedirectToAction("Customer", "Livel").WithSuccess("Thành công", "Thêm khách hàng thành công");
+                }
+                else return View();
             }
-            return RedirectToAction("Customer","Livel");
+            return View().WithDanger("Lỗi", "Trùng thông tin");
         }
 
         [HttpGet]
@@ -54,11 +61,12 @@ namespace LivelCmsSystem.Controllers
         [HttpPost]
         public IActionResult UpdateCustomer(CustomerViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                model.ModifiedDate = DateTime.Now;
-                customerService.Update(model);
-            }
+          
+                if (ModelState.IsValid)
+                {
+                    model.ModifiedDate = DateTime.Now;
+                    customerService.Update(model);
+                }
             return RedirectToAction("Customer", "Livel");
         }
 
@@ -75,7 +83,7 @@ namespace LivelCmsSystem.Controllers
             if (Guid.TryParse(fc["Id"], out guid))
             {
                 var data = customerService.Read(guid);
-                if (data != null)
+                if (data != null&& data.IsActive.Value ==true)
                 {
                     return RedirectToAction("UpdateCustomer", "Customer", new { Id = fc["Id"] });
                 }
@@ -87,11 +95,11 @@ namespace LivelCmsSystem.Controllers
         public IActionResult DeleteCustomer(Guid id)
         {
             var data = customerService.Read(id);
-            if(data!=null)
+            if (data != null)
             {
                 customerService.Delete(id);
             }
-            return RedirectToAction("Customer", "Livel").WithSuccess("Thành công","Xóa khách hàng thành công");
+            return RedirectToAction("Customer", "Livel").WithSuccess("Thành công", "Xóa khách hàng thành công");
         }
     }
 }

@@ -39,16 +39,26 @@ namespace LivelCmsSystem.Controllers
         [HttpPost]
         public IActionResult AddProduct(ProductViewModel model)
         {
+            ViewBag.Brand = brandService.GetAll();
+            ViewBag.ProductType = productTypeService.GetAll();
+
             if (ModelState.IsValid)
             {
                 model.Id = Guid.NewGuid();
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
+
+                model.Name =model.Name + " - "+ model.Id.ToString().Substring(0, 4).ToUpper();
+
+                if (!model.UnitPrice.HasValue || model.UnitPrice.Value <1000)
+                    model.UnitPrice = 1000;
                 model.IsActive = true;
                 productService.Create(model);
+                return RedirectToAction("Product", "Livel").WithSuccess("Thành công", "Thêm sản phẩm thành công");
 
             }
-            return RedirectToAction("Product", "Livel");
+            return View();
+           
         }
 
         [HttpGet]

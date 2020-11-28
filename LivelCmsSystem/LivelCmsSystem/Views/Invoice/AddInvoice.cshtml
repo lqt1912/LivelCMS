@@ -4,33 +4,44 @@
     ViewData["Title"] = "AddInvoice";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+@{
+    var customers = ViewBag.Customer as List<LivelCMSSystem.Models.CustomerViewModel>;
+    List<object> newList = new List<object>();
+    foreach (var member in customers)
+        newList.Add(new
+        {
+            Id = member.Id,
+            Name = member.Id.ToString().Substring(0, 5) + " / " + member.Name
+        });
+
+    var customerList = new SelectList(newList, "Id", "Name");
+    }
+
+    <h4 class="pt-3 pb-3 pl-3 ">Tạo hóa đơn</h4>
+    <hr />
+    <div class="row pt-3 pb-3 pl-3 ">
+        <div class="col-md-4">
+            <form asp-action="AddInvoice" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="control-label">Tên khách hàng</label>
+
+                    <select class="chosen-select form-control " asp-for="CustomerId" asp-items="@customerList" >
+                    </select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Discription" class="control-label">Mô tả</label>
+                    <textarea asp-for="Discription" class="form-control"></textarea>
+                    <span asp-validation-for="Discription" class="text-danger"></span>
+                </div>
 
 
-<h4 class="pt-3 pb-3 pl-3 ">Tạo hóa đơn</h4>
-<hr />
-<div class="row pt-3 pb-3 pl-3 ">
-    <div class="col-md-4">
-        <form asp-action="AddInvoice" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CustomerId" class="control-label">Tên khách hàng</label>
+                <div class="form-group">
+                    <input type="submit" value="Tạo hóa đơn " class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
 
-                <select class="chosen-select form-control " asp-for="CustomerId" asp-items="@(new SelectList(ViewBag.Customer as List<LivelCMSSystem.Models.CustomerViewModel>,"Id", "Name"))">
-                </select>
-                <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Discription" class="control-label">Mô tả</label>
-                <textarea asp-for="Discription" class="form-control"></textarea>
-                <span asp-validation-for="Discription" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group">
-                <input type="submit" value="Tạo hóa đơn " class="btn btn-primary" />
-            </div>
-        </form>
     </div>
-
-</div>
 

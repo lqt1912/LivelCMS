@@ -15,15 +15,24 @@ namespace LivelCMSSystem.Models
         public Guid Id { get; set; }
 
         [Required]
+        [StringLength(100, MinimumLength = 10)]
+        [MaxLength]
         public string Name { get; set; }
 
         [Required]
+        [StringLength(200, MinimumLength = 10)]
+        [MaxLength]
         public string Address { get; set; }
 
         [Required]
+        [StringLength(12, MinimumLength =10)]
+        [MaxLength]
+        [RegularExpression("([0-9]+)", ErrorMessage="Sai định dạng số điện thoại")]
         public string PhoneNumber { get; set; }
 
         [Required]
+        [StringLength(100, MinimumLength = 20)]
+        [MaxLength]
         public string Email { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
