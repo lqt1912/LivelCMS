@@ -18,13 +18,18 @@
 @inject LivelCMSSystem.Core.Repository.IProductService productService
 @inject LivelCMSSystem.Core.Repository.ICustomerService customerService
 <h4 class="pt-3 pb-3 pl-3 ">Chi tiết hóa đơn</h4>
-<h5 class="pt-3 pb-3 pl-3 ">Mã hóa đơn @Model.Id</h5>
-@Html.Partial("_StatusMessages")
 <hr />
 <div class="row pt-3 pb-3 pl-3 ">
     <div class="col-md-4">
         <form>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="control-label">Mã hóa đơn</label>
+                <input disabled class="form-control" value="@Model.Id" />
+
+            </div>
+
             <div class="form-group">
                 <label class="control-label">Trạng thái</label>
                 <input disabled class="form-control" value="@statusService.Read(Model.Status.Value).Name" />

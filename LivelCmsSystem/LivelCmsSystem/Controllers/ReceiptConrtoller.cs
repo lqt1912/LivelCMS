@@ -69,14 +69,14 @@ namespace LivelCmsSystem.Controllers
                     invoice.Status = Guid.Parse("3f74b911-771a-4af4-b297-79b7c3c695a5");
 
                 dataAccess.UpdateInvoice(model.InvoiceId.Value, invoice);
-
+                dataAccess.SubInvoiceDebt(model.InvoiceId.Value, model.ReceivedAmount.Value);
                 model.Id = Guid.NewGuid();
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 receiptService.Create(model);
-                return RedirectToAction("Receipt","Livel");
+                return RedirectToAction("Receipt","Livel").WithSuccess("Thành công", "Thêm thành công chứng từ");
             }
-            return View();
+            return View().WithDanger("Thất bại", "Thêm chứng từ thất bại");
         }
 
         [HttpGet]

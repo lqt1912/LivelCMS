@@ -7,7 +7,6 @@
 
 
 <h4 class="pt-3 pb-3 pl-3 ">Thêm khách hàng</h4>
-@Html.Partial("_StatusMessages")
 <div class="row pl-3" >
     <div class="col-md-4">
         <form method="post" asp-action="AddCustomer" asp-controller="Customer">
@@ -30,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" type="email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
            

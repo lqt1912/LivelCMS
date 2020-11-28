@@ -50,8 +50,6 @@ namespace LivelCmsSystem.Controllers
 
                 model.Name =model.Name + " - "+ model.Id.ToString().Substring(0, 4).ToUpper();
 
-                if (!model.UnitPrice.HasValue || model.UnitPrice.Value <1000)
-                    model.UnitPrice = 1000;
                 model.IsActive = true;
                 productService.Create(model);
                 return RedirectToAction("Product", "Livel").WithSuccess("Thành công", "Thêm sản phẩm thành công");
@@ -99,7 +97,7 @@ namespace LivelCmsSystem.Controllers
             if (Guid.TryParse(fc["Id"], out guid))
             {
                 var data = productService.Read(guid);
-                if (data != null)
+                if (data != null && data.IsActive ==true)
                 {
                     return RedirectToAction("UpdateProduct", "Product", new { Id = fc["Id"] });
                 }

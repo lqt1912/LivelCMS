@@ -10,7 +10,7 @@ namespace LivelCmsSystem.Services.CustomDataAccess
     {
         void AddInvoiceTotalPrice(Guid id, int price);
         void SubInvoiceTotalPrice(Guid id, int price);
-
+        void SubInvoiceDebt(Guid id, int price);
         void UpdateInvoice(Guid id, InvoiceViewModel model);
 
     }

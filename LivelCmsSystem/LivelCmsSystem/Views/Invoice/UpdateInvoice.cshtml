@@ -11,19 +11,19 @@
     <div class="col-md-4">
         <form asp-action="UpdateInvoice" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Status" class="control-label">Trạng thái</label>
                 <select class="chosen-select form-control " asp-for="@Model.Status" asp-items="@(new SelectList(ViewBag.InvoiceStatus as List<LivelCMSSystem.Models.InvoiceStatusViewModel>,"Id", "Name"))">
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="CustomerId" class="control-label">Tên khách hàng</label>
                 <select class="chosen-select form-control " asp-for="@Model.CustomerId" asp-items="@(new SelectList(ViewBag.Customer as List<LivelCMSSystem.Models.CustomerViewModel>,"Id", "Name"))">
                 </select>
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="CreatedDate" class="control-label">Ngày lập</label>
                 <input type="hidden"  asp-for="@Model.CreatedDate" class="form-control"/>
                 <span asp-validation-for="CreatedDate" class="text-danger"></span>
@@ -32,7 +32,7 @@
                 <label asp-for="ModifedDate" class="control-label">Thay đổi lần cuối</label>
                 <input type="hidden"  class="form-control" asp-for="@Model.ModifedDate"  />
                 <span asp-validation-for="ModifedDate" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Discription" class="control-label">Mô tả</label>
                 <textarea asp-for="@Model.Discription" class="form-control"></textarea>

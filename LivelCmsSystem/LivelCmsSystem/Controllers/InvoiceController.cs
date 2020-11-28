@@ -84,7 +84,7 @@ namespace LivelCmsSystem.Controllers
             {
                 dataAccess.UpdateInvoice(model.Id, model);
             }
-            return RedirectToAction("InvoiceDetail", new { id=model.Id});
+            return RedirectToAction("InvoiceDetail", new { id=model.Id}).WithSuccess("Thành công", "Chỉnh sửa thành công");
         }
 
 
@@ -133,9 +133,10 @@ namespace LivelCmsSystem.Controllers
 
                 currentInvoice.TotalPrice += model.UnitPrice;
                 await invoiceDetailService.CreateAsync(model);
+
             
 
-                return RedirectToAction("InvoiceDetail", new { id = currentInvoice.Id });
+                return RedirectToAction("InvoiceDetail", new { id = currentInvoice.Id }).WithSuccess("Thành công","Thêm chi tiết hóa đơn thành công");
             }
 
             ViewBag.Product = productService.GetAll();
