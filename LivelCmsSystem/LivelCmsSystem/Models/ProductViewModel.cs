@@ -18,7 +18,7 @@ namespace LivelCMSSystem.Models
         public Guid? Brand { get; set; }
 
         [Required]
-        [Range(1000, 50000000)]
+        [Range(1000, 500000000)]
         public int? UnitPrice { get; set; }
         public Guid? ProductType { get; set; }
         public DateTime? CreatedDate { get; set; }
