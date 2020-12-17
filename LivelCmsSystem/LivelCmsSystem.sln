@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Scaffold.txt = Scaffold.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.DataGenerator", "LivelCmsSystem.DataGenerator\LivelCmsSystem.DataGenerator.csproj", "{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelCmsSystem.DataGenerator", "LivelCmsSystem.DataGenerator\LivelCmsSystem.DataGenerator.csproj", "{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test", "LivelCmsSystem.Test\LivelCmsSystem.Test.csproj", "{7886DCFE-3F26-448E-8832-F91019D77BD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{023961D0-E7AA-4A16-903A-7FA3CC7EA9B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7886DCFE-3F26-448E-8832-F91019D77BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7886DCFE-3F26-448E-8832-F91019D77BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7886DCFE-3F26-448E-8832-F91019D77BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7886DCFE-3F26-448E-8832-F91019D77BD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
