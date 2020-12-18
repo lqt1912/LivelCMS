@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProductController : Controller
     {
         private readonly IBrandService brandService;
@@ -81,9 +81,9 @@ namespace LivelCmsSystem.Controllers
                 model.IsActive = true;
                 model.ModifiedDate = DateTime.Now;
                 productService.Update(model);
-
+                return RedirectToAction("Product", "Livel").WithSuccess("Success", "Cập nhật thành công");
             }
-            return RedirectToAction("Product", "Livel");
+            else return RedirectToAction("Product", "Livel").WithDanger("Fail", "Cập nhật thất bại");
         }
 
         [HttpGet]

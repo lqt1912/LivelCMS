@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class LivelController : Controller
     {
         private readonly IProductService productService;

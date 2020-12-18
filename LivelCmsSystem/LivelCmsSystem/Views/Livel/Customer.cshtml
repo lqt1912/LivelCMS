@@ -37,8 +37,8 @@
                                         <td> @item.PhoneNumber</td>
                                         <td>@item.Email</td>
                                         <td>
-                                            <a asp-action="UpdateCustomer" asp-controller="Customer" asp-route-id="@item.Id">Cập nhật</a>
-                                            <a data-toggle="modal" data-target="#modal-@item.Id" class="pl-2 text-danger">Xóa</a>
+                                            <a asp-action="UpdateCustomer" asp-controller="Customer" asp-route-id="@item.Id" id="update">Cập nhật</a>
+                                            <a data-toggle="modal" data-target="#modal-@item.Id" class="pl-2 text-danger" id="delete">Xóa</a>
 
 
                                             <!-- Modal confirm delete  -->

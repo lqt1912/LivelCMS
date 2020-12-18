@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ReceiptController : Controller
     {
 

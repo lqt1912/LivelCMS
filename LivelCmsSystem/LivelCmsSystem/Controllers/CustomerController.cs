@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivelCmsSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerService customerService;
@@ -67,10 +67,10 @@ namespace LivelCmsSystem.Controllers
                 if (ModelState.IsValid)
                 {
                     model.ModifiedDate = DateTime.Now;
-                    
                     customerService.Update(model);
-                }
-            return RedirectToAction("Customer", "Livel");
+                    return RedirectToAction("Customer", "Livel").WithSuccess("Success", "Cập nhật thành công");
+            }
+            else return RedirectToAction("Customer", "Livel").WithDanger("Fail", "Cập nhật thất bại");
         }
 
         [HttpGet]
