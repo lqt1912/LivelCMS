@@ -4,12 +4,13 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Xunit;
 using Assert = Xunit.Assert;
 
 namespace LivelCmsSystem.Test.ProductPage
 {
-    public class AutomationTest:IDisposable
+    public class AutomationTest : IDisposable
     {
         private readonly IWebDriver _driver;
         private readonly ProductPage _page;
@@ -24,42 +25,49 @@ namespace LivelCmsSystem.Test.ProductPage
             _driver.Quit();
             _driver.Dispose();
         }
+
         [Fact]
         public void TC19()
         {
             _page.Entry("10");
             Assert.Contains("Showing 1 to 10", _page.EntriesValidator);
         }
+
         [Fact]
         public void TC20()
         {
             _page.Entry("25");
             Assert.Contains("Showing 1 to 25", _page.EntriesValidator);
         }
+
         [Fact]
         public void TC21()
         {
             _page.Entry("50");
             Assert.Contains("Showing 1 to 50", _page.EntriesValidator);
         }
+
         [Fact]
         public void TC22()
         {
             _page.Entry("100");
             Assert.Contains("Showing 1 to 100", _page.EntriesValidator);
         }
+
         [Fact]
         public void TC23()
         {
             _page.Search("88");
             Assert.Contains("f9881", _page.SearchValidator);
         }
+
         [Fact]
         public void TC24()
         {
             _page.Search("f9881");
             Assert.Contains("f9881", _page.SearchValidator);
         }
+
         [Fact]
         public void TC25()
         {
@@ -78,7 +86,21 @@ namespace LivelCmsSystem.Test.ProductPage
         public void TC27()
         {
             _page.Update();
-            Assert.Contains("", _page.UpdateValidator);
+            Assert.Contains("Cập Nhật Sản Phẩm", _page.UpdateValidator);
+        }
+
+        [Fact]
+        public void TC28()
+        {
+            _page.Delete();
+            Assert.Contains("Xác nhận xóa ", _page.DeleteValidator);
+        }
+
+        [Fact]
+        public void TC29()
+        {
+            _page.Success();
+            Assert.Contains("Thành công", _page.SuccessValidator);
         }
     }
 }

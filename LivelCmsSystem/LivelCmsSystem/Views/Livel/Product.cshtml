@@ -46,9 +46,9 @@
                                         <td>0</td>
                                     }
                                 <td>
-                                    <a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id">Cập nhật</a>
+                                    <a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id" id="update">Cập nhật</a>
                                     
-                                    <a data-toggle="modal" data-target="#modal-@item.Id" class="pl-2 text-danger">Xóa</a>
+                                    <a data-toggle="modal" data-target="#modal-@item.Id" class="pl-2 text-danger" id="delete">Xóa</a>
 
 
                                     <!-- Modal confirm delete  -->
@@ -66,7 +66,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="pl-2 text-danger">Xóa</a>
+                                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="pl-2 text-danger" id="xoa">Xóa</a>
                                                 </div>
                                             </div>
                                         </div>

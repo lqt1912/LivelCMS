@@ -26,12 +26,14 @@ namespace LivelCmsSystem.Test.ProductPage
         private IWebElement SearchElement => _driver.FindElement(By.ClassName("form-control-sm"));
         private IWebElement UpdateElement => _driver.FindElement(By.Id("update"));
         private IWebElement DeleteElement => _driver.FindElement(By.Id("delete"));
+        private IWebElement SuccessElement => _driver.FindElement(By.ClassName("pl-2"));
         SelectElement EntriesElement => new SelectElement(_driver.FindElement(By.ClassName("custom-select")));
         public void Navigate() => _driver.Navigate().GoToUrl(URL);
         public void Entry(string entries) => EntriesElement.SelectByValue(entries);
         public void Search(string search) => SearchElement.SendKeys(search);
         public void Update() => UpdateElement.Click();
         public void Delete() => DeleteElement.Click();
+        public void Success() => SuccessElement.Click();
 
 
     }
