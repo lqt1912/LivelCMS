@@ -44,7 +44,7 @@
                                     </td>
                                     <td>@item.TotalPrice.Value.ToString("0")</td>
                                     <td>@item.RemainDebt.Value.ToString("0")</td>
-                                    <td><a asp-action="InvoiceDetail" asp-controller="Invoice" asp-route-id="@item.Id">Chi tiết</a></td>
+                                    <td><a asp-action="InvoiceDetail" asp-controller="Invoice" asp-route-id="@item.Id" id="update">Chi tiết</a></td>
                                 </tr>
                                 }
 

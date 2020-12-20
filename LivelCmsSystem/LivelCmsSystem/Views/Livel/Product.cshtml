@@ -48,7 +48,7 @@
                                 <td>
                                     <a asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@item.Id" id="update">Cập nhật</a>
                                     
-                                    <a data-toggle="modal" data-target="#modal-@item.Id" class="pl-2 text-danger" id="delete">Xóa</a>
+                                    <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="pl-2 text-danger" id="delete">Xóa</a>
 
 
                                     <!-- Modal confirm delete  -->

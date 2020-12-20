@@ -81,9 +81,9 @@ namespace LivelCmsSystem.Controllers
                 model.IsActive = true;
                 model.ModifiedDate = DateTime.Now;
                 productService.Update(model);
-                return RedirectToAction("Product", "Livel").WithSuccess("Success", "Cập nhật thành công");
+                return RedirectToAction("Product", "Livel").WithSuccess("Thành công", "Cập nhật thành công");
             }
-            else return RedirectToAction("Product", "Livel").WithDanger("Fail", "Cập nhật thất bại");
+            else return RedirectToAction("Product", "Livel").WithDanger("Lỗi", "Cập nhật thất bại");
         }
 
         [HttpGet]

@@ -1,23 +1,20 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 using Xunit;
-using Assert = Xunit.Assert;
 
-namespace LivelCmsSystem.Test.ProductPage
+namespace LivelCmsSystem.Test.CustomerPage
 {
-    public class AutomationTest : IDisposable
+    public class AutomationTest:IDisposable
     {
         private readonly IWebDriver _driver;
-        private readonly ProductPage _page;
+        private readonly CustomerPage _page;
         public AutomationTest()
         {
             _driver = new ChromeDriver();
-            _page = new ProductPage(_driver);
+            _page = new CustomerPage(_driver);
             _page.Navigate();
         }
         public void Dispose()
@@ -25,72 +22,61 @@ namespace LivelCmsSystem.Test.ProductPage
             _driver.Quit();
             _driver.Dispose();
         }
-
         [Fact]
-        public void TC19()
+        public void TC29()
         {
             _page.Entry("10");
             Assert.Contains("Showing 1 to 10", _page.EntriesValidator);
         }
 
         [Fact]
-        public void TC20()
+        public void TC30()
         {
             _page.Entry("25");
             Assert.Contains("Showing 1 to 25", _page.EntriesValidator);
         }
 
         [Fact]
-        public void TC21()
+        public void TC31()
         {
             _page.Entry("50");
             Assert.Contains("Showing 1 to 50", _page.EntriesValidator);
         }
 
         [Fact]
-        public void TC22()
+        public void TC32()
         {
             _page.Entry("100");
             Assert.Contains("Showing 1 to 100", _page.EntriesValidator);
         }
 
         [Fact]
-        public void TC23()
+        public void TC33()
         {
-            _page.Search("88");
-            Assert.Contains("f9881", _page.SearchValidator);
+            _page.Search("1bc0b");
+            Assert.Contains("1bc0b", _page.SearchValidator);
         }
-
         [Fact]
-        public void TC24()
+        public void TC34()
         {
-            _page.Search("f9881");
-            Assert.Contains("f9881", _page.SearchValidator);
+            _page.Search("Anh");
+            Assert.Contains("Showing 1 to 2 ", _page.EntriesValidator);
         }
-
         [Fact]
-        public void TC25()
+        public void TC35()
         {
-            _page.Search("Xe");
-            Assert.Contains("Showing 1 to 10 of 22 entries", _page.EntriesValidator);
+            _page.Search("0868992467");
+            Assert.Contains("1bc0b", _page.SearchValidator);
         }
-
         [Fact]
-        public void TC26()
-        {
-            _page.Search("1,540,004");
-            Assert.Contains("7d7de", _page.SearchValidator);
-        }
-
-        [Fact]
-        public void TC27()
+        public void TC36()
         {
             _page.Update();
-            Assert.Contains("Cập Nhật Sản Phẩm", _page.UpdateValidator);
+            Assert.Contains("Chỉnh sửa thông tin khách hàng", _page.UpdateValidator);
         }
 
         [Fact]
-        public void TC28()
+        public void TC37()
         {
             _page.Delete();
             Assert.Contains("Thành công", _page.DeleteValidator);
