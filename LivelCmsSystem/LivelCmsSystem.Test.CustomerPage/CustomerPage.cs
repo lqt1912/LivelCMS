@@ -4,21 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LivelCmsSystem.Test.ProductPage
+namespace LivelCmsSystem.Test.CustomerPage
 {
-    class ProductPage
+    class CustomerPage
     {
         private readonly IWebDriver _driver;
-        private const string URL = "https://localhost:44334/danh-sach-san-pham";
-        public ProductPage(IWebDriver driver)
+        private const string URL = "https://localhost:44334/danh-sach-khach-hang";
+
+        public CustomerPage(IWebDriver driver)
         {
             _driver = driver;
         }
+
         public string Source => _driver.PageSource;
         public string EntriesValidator => _driver.FindElement(By.Id("example1_info")).Text;
         public string SearchValidator => _driver.FindElement(By.ClassName("sorting_1")).Text;
         public string UpdateValidator => _driver.FindElement(By.TagName("h4")).Text;
         public string DeleteValidator => _driver.FindElement(By.TagName("strong")).Text;
+
+        //public IWebElement EntriesElement => _driver.FindElement(By.Id())
         private IWebElement SearchElement => _driver.FindElement(By.ClassName("form-control-sm"));
         private IWebElement UpdateElement => _driver.FindElement(By.Id("update"));
         private IWebElement DeleteElement => _driver.FindElement(By.Id("delete"));

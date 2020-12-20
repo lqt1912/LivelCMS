@@ -18,9 +18,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLiveCMS", "TestLiveCMS\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LivelCmsSystem.Tests", "LivelCmsSystem.Tests", "{EB990623-5B15-4DC8-B025-DCCE6B28EF1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test.LoginPage", "LivelCmsSystem.Test.LoginPage\LivelCmsSystem.Test.LoginPage.csproj", "{D351B072-5C6C-4BDD-A09E-62BEFD5CE74F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelCmsSystem.Test.LoginPage", "LivelCmsSystem.Test.LoginPage\LivelCmsSystem.Test.LoginPage.csproj", "{D351B072-5C6C-4BDD-A09E-62BEFD5CE74F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test.ProductPage", "LivelCmsSystem.Test.ProductPage\LivelCmsSystem.Test.ProductPage.csproj", "{1CA47D5F-AD32-42CC-BB69-27D599D01D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelCmsSystem.Test.ProductPage", "LivelCmsSystem.Test.ProductPage\LivelCmsSystem.Test.ProductPage.csproj", "{1CA47D5F-AD32-42CC-BB69-27D599D01D0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivelCmsSystem.Test.CustomerPage", "LivelCmsSystem.Test.CustomerPage\LivelCmsSystem.Test.CustomerPage.csproj", "{39F3249C-0EBA-425E-BE58-96F6672EE261}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test.InvoicePage", "XUnitTestProject1\LivelCmsSystem.Test.InvoicePage.csproj", "{CD30535C-E375-4D45-B9F2-8EAC5A1FD384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test.Receipt", "LivelCmsSystem.Test.Receipt\LivelCmsSystem.Test.Receipt.csproj", "{C7818B34-49D0-44C4-9832-41839749CCCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test.ProductFunction", "XUnitTestProject2\LivelCmsSystem.Test.ProductFunction.csproj", "{3B4DA5EF-7F6F-4F26-8AE6-570661C5FDD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivelCmsSystem.Test.CustomerFuction", "LivelCmsSystem.Test.CustomerFuction\LivelCmsSystem.Test.CustomerFuction.csproj", "{679C1FAD-F14D-4FC0-8610-EE9926C3156E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +62,26 @@ Global
 		{1CA47D5F-AD32-42CC-BB69-27D599D01D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CA47D5F-AD32-42CC-BB69-27D599D01D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CA47D5F-AD32-42CC-BB69-27D599D01D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F3249C-0EBA-425E-BE58-96F6672EE261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F3249C-0EBA-425E-BE58-96F6672EE261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F3249C-0EBA-425E-BE58-96F6672EE261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F3249C-0EBA-425E-BE58-96F6672EE261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD30535C-E375-4D45-B9F2-8EAC5A1FD384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD30535C-E375-4D45-B9F2-8EAC5A1FD384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD30535C-E375-4D45-B9F2-8EAC5A1FD384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD30535C-E375-4D45-B9F2-8EAC5A1FD384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7818B34-49D0-44C4-9832-41839749CCCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7818B34-49D0-44C4-9832-41839749CCCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7818B34-49D0-44C4-9832-41839749CCCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7818B34-49D0-44C4-9832-41839749CCCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4DA5EF-7F6F-4F26-8AE6-570661C5FDD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4DA5EF-7F6F-4F26-8AE6-570661C5FDD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4DA5EF-7F6F-4F26-8AE6-570661C5FDD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4DA5EF-7F6F-4F26-8AE6-570661C5FDD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{679C1FAD-F14D-4FC0-8610-EE9926C3156E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{679C1FAD-F14D-4FC0-8610-EE9926C3156E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{679C1FAD-F14D-4FC0-8610-EE9926C3156E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{679C1FAD-F14D-4FC0-8610-EE9926C3156E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +89,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D351B072-5C6C-4BDD-A09E-62BEFD5CE74F} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
 		{1CA47D5F-AD32-42CC-BB69-27D599D01D0A} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
+		{39F3249C-0EBA-425E-BE58-96F6672EE261} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
+		{CD30535C-E375-4D45-B9F2-8EAC5A1FD384} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
+		{C7818B34-49D0-44C4-9832-41839749CCCA} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
+		{3B4DA5EF-7F6F-4F26-8AE6-570661C5FDD1} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
+		{679C1FAD-F14D-4FC0-8610-EE9926C3156E} = {EB990623-5B15-4DC8-B025-DCCE6B28EF1D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA078170-5AB4-4C62-A6AE-1A2A5B74B93C}

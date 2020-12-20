@@ -45,7 +45,7 @@
                                     }
                                     <td> @item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
                                     <td>@item.Description</td>
-                                    <td><a asp-action="ReceiptDetail" asp-controller="Receipt" asp-route-id="@item.Id">Chi tiết</a></td>
+                                    <td><a asp-action="ReceiptDetail" asp-controller="Receipt" asp-route-id="@item.Id"id="update">Chi tiết</a></td>
                                 </tr>
                                 }
 
