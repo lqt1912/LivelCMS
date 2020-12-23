@@ -47,7 +47,7 @@ namespace LivelCmsSystem.Services.CustomDataAccess
             using (var _context = new ApplicationDbContext())
             {
                 var currentInvoice = _context.Invoice.FirstOrDefault(x => x.Id == id);
-               // currentInvoice.Status = model.Status;
+                currentInvoice.Status = model.Status;
                 currentInvoice.ModifedDate = DateTime.Now;
                 currentInvoice.Discription = model.Discription;
                 currentInvoice.CustomerId = model.CustomerId;
