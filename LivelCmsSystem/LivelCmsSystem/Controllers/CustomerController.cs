@@ -63,12 +63,19 @@ namespace LivelCmsSystem.Controllers
         [HttpPost]
         public IActionResult UpdateCustomer(CustomerViewModel model)
         {
-          
+            var a = customerService.GetAll().FirstOrDefault(x => x.Email == model.Email);
+            var b = customerService.GetAll().FirstOrDefault(x => x.PhoneNumber == model.PhoneNumber);
+
+            if (a == null && b == null)
+            {
                 if (ModelState.IsValid)
                 {
                     model.ModifiedDate = DateTime.Now;
                     customerService.Update(model);
                     return RedirectToAction("Customer", "Livel").WithSuccess("Success", "Cập nhật thành công");
+                }
+                else return RedirectToAction("Customer", "Livel").WithDanger("Fail", "Cập nhật thất bại");
+
             }
             else return RedirectToAction("Customer", "Livel").WithDanger("Fail", "Cập nhật thất bại");
         }
@@ -86,7 +93,7 @@ namespace LivelCmsSystem.Controllers
             if (Guid.TryParse(fc["Id"], out guid))
             {
                 var data = customerService.Read(guid);
-                if (data != null&& data.IsActive.Value ==true)
+                if (data != null && data.IsActive.Value == true)
                 {
                     return RedirectToAction("UpdateCustomer", "Customer", new { Id = fc["Id"] });
                 }
